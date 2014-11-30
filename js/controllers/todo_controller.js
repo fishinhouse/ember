@@ -2,10 +2,10 @@
 	isCompleted:function(key,value){
 		var model = this.get('model');
 		
-		if(value == undefined){
+		if(value === undefined){
 			return model.get('isCompleted');
 		}else{
-			model = this.set('isCompleted',value);
+			model.set('isCompleted',value);
 			model.save();
 			return value;
 		}	

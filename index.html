@@ -1,0 +1,68 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ember学习</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	
+	
+	<!--使用handlebars模版，定义路由表中todos资源的视图。-->
+	<script type="text/x-handlebars" data-template-name="todos">
+		<section id="todoapp">
+			<header id="header">
+				<h1>工作列表</h1>
+				{{input type="text" id="new-todo" placeholder="添加工作吗？" value=newTitle action="createTodo"}}
+			</header>
+			<section id="main">
+				<ul id="todo-list">
+					{{#each todo in model itemController="todo"}}
+						<li {{bind-attr class="todo.isCompleted:completed"}}>
+							{{input type="checkbox" checked=todo.isCompleted class="toggle"}}
+							<label>{{todo.title}}</label><button class="destroy"></button>
+						</li>
+					{{/each}}
+				</ul>
+			</section>
+		</section>
+		<footer id="info">
+			<p>hello</p>
+		
+		</footer>
+		
+		{{outlet}}
+	</script>
+	
+	<script type="text/x-handlebars" data-template-name="books">
+		<section id="books_main">
+			<ul>
+				{{#each book in bookdata}}
+					<li>
+						<label>{{book.title}}作者：{{book.author}}</label>
+					</li>
+				{{/each}}
+				
+			</ul>
+		
+		</section>
+	
+	
+	</script>
+	
+	
+	<!--引用ember前端框架-->
+	<script src="js/libs/jquery-1.11.1.min.js"></script>
+	<script src="js/libs/handlebars-v1.3.0.js"></script>
+	<script src="js/libs/ember.js"></script>
+	<script src="js/libs/ember-data.js"></script>
+	<!--包含我们APP的MVC框架文件-->
+	<script src="js/application.js"></script>
+	<script src="js/router.js"></script>
+	<script src="js/models/todo.js"></script>
+	<script src="js/models/book.js"></script>
+	<script src="js/controllers/todos_controller.js"></script>
+	<script src="js/controllers/todo_controller.js"></script>
+</body>
+
+</html>

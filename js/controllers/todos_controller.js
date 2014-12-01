@@ -14,5 +14,16 @@
 			todo.save();
 			
 		}
-	}
+	},
+	//未完成的工作数量
+	remaining:function(){
+		return this.filterBy('isCompleted',false).get('length');
+		
+	}.property('@each.isCompleted'),
+	//显示单位
+	inflection:function(){
+		var remaining = this.get('remaining');
+		return remaining === 1?'item':'items';
+		
+	}.property('remaining')
 });

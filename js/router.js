@@ -1,7 +1,13 @@
 ﻿//定义URL路由表
 Todos.Router.map(function(){
 	//定义todos资源名及URL访问路径
-	this.resource('todos',{path : '/'});
+	this.resource('todos',{path : '/'},function(){
+		//定义子路由
+		this.route('active');
+		this.route('all');
+		this.route('completed');
+		
+	});
 	//定义books资源名及URL访问路径
 	this.resource('books');
 	
@@ -22,3 +28,43 @@ Todos.BooksRoute = Ember.Route.extend({
 	}
 	
 });
+
+Todos.TodosIndexRoute = Ember.Route.extend({
+	model:function(){
+		return this.modelFor('todos');
+	}
+	
+});
+
+Todos.TodosActiveRoute = Ember.Route.extend({
+	model:function(){
+		return this.store.filter('todo',function(todo){
+			return !todo.get('isCompleted');
+		});
+	},
+	renderTemplate:function(controller){
+		this.render('todos/index',{controller:controller});
+	}
+});
+
+Todos.TodosAllRoute = Ember.Route.extend({
+	model:function(){
+		return this.modelFor('todos');
+	},
+	renderTemplate:function(controller){
+		this.render('todos/index',{controller:controller});
+	}
+});
+
+Todos.TodosCompletedRoute = Ember.Route.extend({
+	model:function(){
+		return this.store.filter('todo',function(todo){
+			return todo.get('isCompleted');
+		});
+	},
+	renderTemplate:function(controller){
+		this.render('todos/index',{controller:controller});
+	}
+});
+
+

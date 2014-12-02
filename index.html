@@ -35,7 +35,7 @@
 		
 			<footer id="footer">
 				<span id="todo-count">
-					<strong>{{remaining}}</strong>{{inflection}}&nbsp;left
+					<strong>{{remaining}}</strong>项未完成
 				</span>
 				<ul id="filters">
 					<li>
@@ -48,6 +48,11 @@
 						{{#link-to "todos.completed" activeClass="selected"}}已完成{{/link-to}}
 					</li>
 				</ul>
+				{{#if hasCompleted}}
+					<button id="clear-completed" {{action "clearCompleted"}}>
+						一键清除已完成({{completedNum}})
+					</button>
+				{{/if}}
 			</footer>
 		</section>
 	</script>

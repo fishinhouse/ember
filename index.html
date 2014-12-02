@@ -30,26 +30,26 @@
 			<section id="main">
 				{{outlet}}
 				
-				<span id="todo-count">
-					<strong>{{remaining}}</strong>{{inflection}}left
-				</span>
+				
 			</section>
+		
+			<footer id="footer">
+				<span id="todo-count">
+					<strong>{{remaining}}</strong>{{inflection}}&nbsp;left
+				</span>
+				<ul id="filters">
+					<li>
+						{{#link-to "todos.all" activeClass="selected"}}全部{{/link-to}}
+					</li>
+					<li>
+						{{#link-to "todos.active" activeClass="selected"}}未完成{{/link-to}}
+					</li>
+					<li>
+						{{#link-to "todos.completed" activeClass="selected"}}已完成{{/link-to}}
+					</li>
+				</ul>
+			</footer>
 		</section>
-		<footer id="info">
-			
-			<ul id="filters">
-				<li>
-					{{#link-to "todos.all" activeClass="selected"}}全部{{/link-to}}
-				</li>
-				<li>
-					{{#link-to "todos.active" activeClass="selected"}}未完成{{/link-to}}
-				</li>
-				<li>
-					{{#link-to "todos.completed" activeClass="selected"}}已完成{{/link-to}}
-				</li>
-			</ul>
-		</footer>
-
 	</script>
 	
 	<script type="text/x-handlebars" data-template-name="books">
